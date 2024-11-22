@@ -86,6 +86,10 @@ class HomeController extends Controller
     // Menampilkan halaman absensi
     public function attendance()
     {
+        if (!session()->has('username')) {
+            return back();
+        }
+        
         return view('user.attendance');
     }
 
