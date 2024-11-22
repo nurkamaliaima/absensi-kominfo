@@ -29,8 +29,8 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Present at</th>
                         <th>Description</th>
+                        <th>Present at</th>
                         @if(session('role_id') !== 3)
                         <th>Action</th>
                         @endif
