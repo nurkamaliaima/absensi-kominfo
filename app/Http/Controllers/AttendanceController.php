@@ -15,6 +15,10 @@ class AttendanceController extends Controller
      */
     public function index()
     {
+        if (!session()->has('username')) {
+            return back();
+        }
+        
         $attendances = Attendance::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.attendance.index', compact('attendances'));
     }

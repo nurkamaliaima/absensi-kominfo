@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /** Route for frontend */
 Route::get('/', 'user\AuthController@index');
-Route::prefix('/user')->group(function () {
+Route::prefix('user')->group(function () {
     Route::post('/login', 'user\AuthController@doLogin');
     Route::get('/home', 'user\HomeController@index');
     Route::get('/logout', 'user\AuthController@logout');
@@ -14,7 +14,7 @@ Route::prefix('/user')->group(function () {
     Route::post('/concession', 'user\HomeController@store_concession');
     Route::get('/history', 'user\HomeController@show_history');
     Route::get('/attendance', 'user\HomeController@attendance');
-    Route::post('/doAttendance', 'user\HomeController@do_attendance');
+    // Route::post('/doAttendance', 'user\HomeController@do_attendance');
 });
 
 // Route::post('user/login', 'user\AuthController@doLogin');
@@ -26,7 +26,7 @@ Route::prefix('/user')->group(function () {
 // Route::post('user/concession', 'user\HomeController@store_concession');
 // Route::get('user/history', 'user\HomeController@show_history');
 // Route::get('user/attendance', 'user\HomeController@attendance');
-// Route::post('/doAttendance', 'user\HomeController@do_attendance');
+Route::post('/doAttendance', 'user\HomeController@do_attendance');
 
 /** Route for backend */
 Route::get('/admin', 'AuthController@index')->name('admin.login');
@@ -34,11 +34,11 @@ Route::get('register', 'AuthController@register');
 Route::post('register', 'AuthController@doRegister');
 Route::post('login', 'AuthController@doLogin');
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('logout', 'AuthController@logout');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('attendance', 'AttendanceController');
     Route::resource('concession', 'ConcessionController');
-});
+// });
