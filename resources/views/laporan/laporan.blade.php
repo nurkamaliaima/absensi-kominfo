@@ -23,8 +23,8 @@
             </div>
             @endif
 
-            <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary mt-4">Filter</button>
+            <div class="form-group col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Filter</button>
             </div>
         </div>
     </form>
@@ -102,14 +102,23 @@
         <thead>
             <tr>
                 <th>Nama</th>
+                <th>Status Kehadiran</th>
                 <th>Waktu Kehadiran</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($kehadiranHarian as $item)
+            {{-- @foreach($kehadiranHarian as $item)
             <tr>
                 <td>{{ $item->user->name ?? '-' }}</td>
+                <td>{{ $item->user->name ?? '-' }}</td>
                 <td>{{ $item->created_at }}</td>
+            </tr>
+            @endforeach --}}
+            @foreach($kehadiranHarian as $item)
+            <tr>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->status }}</td>
+                <td>{{ $item->waktu }}</td>
             </tr>
             @endforeach
         </tbody>

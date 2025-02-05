@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\Concession;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\LaporanKehadiranHarianResource;
 
 class LaporanController extends Controller
 {
@@ -41,7 +43,11 @@ class LaporanController extends Controller
     public function laporanHarian(Request $request)
     {
         $tanggal = $request->input('tanggal', now()->format('Y-m-d'));
-        $kehadiranHarian = Absensi::with('user')->whereDate('created_at', $tanggal)->get();
+        // $kehadiranHarian = Absensi::with('user')->whereDate('created_at', $tanggal)->get();
+        $attendance = LaporanKehadiranHarianResource::collection(Absensi::with('user')->whereDate('created_at', $tanggal)->get());
+        $concession = LaporanKehadiranHarianResource::collection(Concession::with('user')->whereDate('created_at', $tanggal)->get());
+
+        $kehadiranHarian = array_merge(json_decode(json_encode($attendance)), json_decode(json_encode($concession)));
 
         // Kirim data ke view dengan tambahan 'type' sebagai harian
         return view('laporan.laporan', compact('kehadiranHarian', 'tanggal'))->with('type', 'harian');
