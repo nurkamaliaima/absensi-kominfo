@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
         <div class="sidebar-brand-text mx-3">Presensi Online <small> Dinas Kominfo </small></div><br>
     </a>
 
@@ -31,14 +31,13 @@
             <span>Users</span></a>
     </li>
 
-    <!-- Nav Item - Charts -->
+    <!-- Nav Item - Attendance -->
     <li class="nav-item {{ (request()->segment(1) == 'attendance') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('attendance') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Attendance</span></a>
     </li>
 
-    
     <li class="nav-item {{ (request()->segment(1) == 'role') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('role') }}">
             <i class="fas fa-fw fa-lock"></i>
@@ -48,6 +47,14 @@
         <a class="nav-link" href="{{ url('concession') }}">
             <i class="fas fa-fw fa-edit"></i>
             <span>Concession</span></a>
+    </li>
+
+    <!-- Laporan -->
+    <li class="nav-item {{ (request()->routeIs('laporan.gabungan')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('laporan.gabungan') }}">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Laporan</span>
+        </a>
     </li>
     @endif
 
@@ -79,7 +86,7 @@
 
     <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Logout -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('logout') }}">
             <i class="fas fa-fw fa-sign-out-alt"></i>

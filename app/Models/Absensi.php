@@ -5,27 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Concession extends Model
+class Absensi extends Model
 {
     use HasFactory;
 
     // Nama tabel di database
-    protected $table = 'concession';
+    protected $table = 'attendance';
 
     // Kolom yang dapat diisi secara massal
     protected $fillable = [
         'user_id',
-        'reason',    // Alasan izin
-        'description',
-        'status',    // Status izin (disetujui, ditolak, dll.)
-        'start_date', // Tanggal mulai izin
-        'end_date',   // Tanggal berakhir izin
+        'jam_masuk',
+        'jam_keluar',
+        'status', // Contoh kolom tambahan jika ada
     ];
 
     // Timestamps untuk created_at dan updated_at
     public $timestamps = true;
 
-    // Relasi dengan model User
+    // Relasi ke model User (asumsi setiap absensi terkait dengan pengguna)
     public function user()
     {
         return $this->belongsTo(User::class);

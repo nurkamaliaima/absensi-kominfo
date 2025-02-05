@@ -134,4 +134,26 @@ class ConcessionController extends Controller
         Concession::where('id', $id)->delete();
         return redirect('concession')->with('message', 'Concession from <strong>' . $user->name . '</strong> has been deleted!');
     }
+
+    /**
+     * Fungsi untuk menyimpan permintaan izin dari pengguna.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeConcession(Request $request)
+    {
+        $request->validate([
+            'reason' => 'required|string',
+            // 'description' tidak wajib diisi; gunakan nilai default jika kosong
+        ]);
+
+        Concession::create([
+            'user_id' => auth()->id(), // Menggunakan user ID dari session atau autentikasi
+            'reason' => $request->reason,
+            'description' => $request->description ?? '', // Berikan nilai default kosong jika tidak diisi
+        ]);
+
+        return redirect()->back()->with('success', 'Izin berhasil diajukan.');
+    }
 }

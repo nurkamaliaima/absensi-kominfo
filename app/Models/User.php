@@ -11,6 +11,7 @@ class User extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $table = 'users';
     protected $guarded = [];
 
@@ -19,4 +20,9 @@ class User extends Model
         return $this->belongsTo(Role::class);
     }
 
+    // Menambahkan relasi absensi
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class);
+    }
 }

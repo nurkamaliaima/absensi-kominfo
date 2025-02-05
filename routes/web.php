@@ -34,6 +34,16 @@ Route::get('register', 'AuthController@register');
 Route::post('register', 'AuthController@doRegister');
 Route::post('login', 'AuthController@doLogin');
 
+use App\Http\Controllers\LaporanController;
+
+Route::get('laporan/harian', [LaporanController::class, 'laporanHarian'])->name('laporan.harian');
+Route::get('laporan/bulanan', [LaporanController::class, 'laporanBulanan'])->name('laporan.bulanan');
+Route::get('laporan/tidakhadir', [LaporanController::class, 'laporanTidakHadir'])->name('laporan.tidakhadir');
+Route::get('laporan/terlambat', [LaporanController::class, 'laporanTerlambat'])->name('laporan.terlambat');
+Route::get('laporan/jamkerja', [LaporanController::class, 'laporanJamKerja'])->name('laporan.jamkerja');
+Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->name('laporan.gabungan');
+
+
 // Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('logout', 'AuthController@logout');
