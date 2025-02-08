@@ -56,8 +56,21 @@ class LaporanController extends Controller
     public function laporanBulanan(Request $request)
     {
         $bulan = $request->input('bulan', now()->format('Y-m'));
-        $kehadiranBulanan = Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
-            ->whereYear('created_at', date('Y', strtotime($bulan)))->get();
+        // $kehadiranBulanan = Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+        //     ->whereYear('created_at', date('Y', strtotime($bulan)))->get();
+        $attendance = LaporanKehadiranHarianResource::collection(
+            Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))->get()
+        );
+        $concession = LaporanKehadiranHarianResource::collection(
+            Concession::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))->get()
+        );
+
+        $kehadiranBulanan = array_merge(json_decode(json_encode($attendance)), json_decode(json_encode($concession)));
+        usort($kehadiranBulanan, function ($a, $b) {
+            return strtotime($a->waktu) - strtotime($b->waktu);
+        });
 
         // Kirim data ke view dengan tambahan 'type' sebagai bulanan
         return view('laporan.laporan', compact('kehadiranBulanan', 'bulan'))->with('type', 'bulanan');
@@ -66,9 +79,11 @@ class LaporanController extends Controller
     public function laporanTidakHadir(Request $request)
     {
         $tanggal = $request->input('tanggal', now()->format('Y-m-d'));
-        $tidakHadir = User::whereDoesntHave('absensi', function ($q) use ($tanggal) {
-            $q->whereDate('created_at', $tanggal);
-        })->get();
+        // $tidakHadir = User::whereDoesntHave('absensi', function ($q) use ($tanggal) {
+        //     $q->whereDate('created_at', $tanggal);
+        // })->get();
+        $concession = LaporanKehadiranHarianResource::collection(Concession::with('user')->whereDate('created_at', $tanggal)->get());
+        $tidakHadir = array_merge(json_decode(json_encode($concession)));
 
         // Kirim data ke view dengan tambahan 'type' sebagai tidakhadir
         return view('laporan.laporan', compact('tidakHadir', 'tanggal'))->with('type', 'tidakhadir');

@@ -132,16 +132,24 @@
         <thead>
             <tr>
                 <th>Nama</th>
+                <th>Status Kehadiran</th>
                 <th>Waktu Kehadiran</th>
             </tr>
         </thead>
         <tbody>
             @foreach($kehadiranBulanan as $item)
             <tr>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->status }}</td>
+                <td>{{ $item->waktu }}</td>
+            </tr>
+            @endforeach
+            {{-- @foreach($kehadiranBulanan as $item)
+            <tr>
                 <td>{{ $item->user->name ?? '-' }}</td>
                 <td>{{ $item->created_at }}</td>
             </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
     @endif
@@ -153,16 +161,26 @@
         <thead>
             <tr>
                 <th>Nama</th>
+                <th>Tanggal</th>
+                <th>Alasan</th>
                 <th>Keterangan</th>
             </tr>
         </thead>
         <tbody>
             @foreach($tidakHadir as $item)
             <tr>
+                <td>{{ $item->nama }}</td>
+                <td>{{ date('Y-m-d', strtotime($item->waktu)) }}</td>
+                <td>{{ $item->status }}</td>
+                <td>{{ $item->keterangan }}</td>
+            </tr>
+            @endforeach
+            {{-- @foreach($tidakHadir as $item)
+            <tr>
                 <td>{{ $item->name }}</td>
                 <td>Belum Absen</td>
             </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
     @endif
