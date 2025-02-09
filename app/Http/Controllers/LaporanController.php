@@ -91,12 +91,18 @@ class LaporanController extends Controller
 
     public function laporanTerlambat(Request $request)
     {
-        $tanggal = $request->input('tanggal', now()->format('Y-m-d'));
-        $terlambat = Absensi::with('user')->whereDate('created_at', $tanggal)
-            ->whereTime('created_at', '>=', '08:00:00')->get();
+        // $tanggal = $request->input('tanggal', now()->format('Y-m-d'));
+        // $terlambat = Absensi::with('user')->whereDate('created_at', $tanggal)
+        //     ->whereTime('created_at', '>=', '08:00:00')->get();
+        $jamKerja = '06:00:000';
+
+        $bulan = $request->input('bulan', now()->format('Y-m'));
+        $terlambat = Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))
+            ->whereTime('created_at', '>=', $jamKerja)->get();
 
         // Kirim data ke view dengan tambahan 'type' sebagai terlambat
-        return view('laporan.laporan', compact('terlambat', 'tanggal'))->with('type', 'terlambat');
+        return view('laporan.laporan', compact('terlambat', 'bulan'))->with('type', 'terlambat');
     }
 
     public function laporanJamKerja(Request $request)

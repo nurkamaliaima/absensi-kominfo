@@ -8,7 +8,7 @@
     <form method="GET" action="{{ url()->current() }}">
         <div class="form-row">
             <!-- Filter untuk Laporan Harian, Tidak Hadir, Terlambat, Jam Kerja -->
-            @if(request()->is('laporan/harian') || request()->is('laporan/tidakhadir') || request()->is('laporan/terlambat') || request()->is('laporan/jamkerja'))
+            @if(request()->is('laporan/harian') || request()->is('laporan/tidakhadir') || request()->is('laporan/jamkerja'))
             <div class="form-group col-md-3">
                 <label for="tanggal">Tanggal</label>
                 <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ $tanggal ?? now()->format('Y-m-d') }}">
@@ -16,7 +16,7 @@
             @endif
 
             <!-- Filter untuk Laporan Bulanan -->
-            @if(request()->is('laporan/bulanan'))
+            @if(request()->is('laporan/bulanan') || request()->is('laporan/terlambat'))
             <div class="form-group col-md-3">
                 <label for="bulan">Bulan</label>
                 <input type="month" name="bulan" id="bulan" class="form-control" value="{{ $bulan ?? now()->format('Y-m') }}">
@@ -46,9 +46,9 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/terlambat') ? 'active' : '' }}" href="{{ route('laporan.terlambat') }}">Terlambat</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/jamkerja') ? 'active' : '' }}" href="{{ route('laporan.jamkerja') }}">Jam Kerja</a>
-        </li>
+        </li> --}}
     </ul>
 
     <!-- Konten Laporan Gabungan -->
@@ -187,7 +187,7 @@
 
     <!-- Laporan Terlambat -->
     @if(request()->is('laporan/terlambat'))
-    <h3>Laporan Terlambat ({{ $tanggal }})</h3>
+    <h3>Laporan Terlambat ({{ $bulan }})</h3>
     <table class="table">
         <thead>
             <tr>

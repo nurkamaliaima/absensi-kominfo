@@ -56,6 +56,14 @@
             <span>Laporan</span>
         </a>
     </li>
+
+    <!-- Instansi -->
+    <li class="nav-item {{ (request()->routeIs('instansi')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('instansi.index') }}">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Instansi</span>
+        </a>
+    </li>
     @endif
 
     @if(session('role_id') == 2)

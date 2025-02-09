@@ -52,3 +52,9 @@ Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->
     Route::resource('attendance', 'AttendanceController');
     Route::resource('concession', 'ConcessionController');
 // });
+
+Route::prefix('instansi')->name('instansi.')
+->controller(InstansiController::class)
+->group(function () {
+    Route::get('/', 'index')->name('index');
+});
