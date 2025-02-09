@@ -44,9 +44,9 @@
 
     <!-- Tab Menu -->
     <ul class="nav nav-tabs mb-4">
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/gabungan') ? 'active' : '' }}" href="{{ route('laporan.gabungan') }}">Laporan Gabungan</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/harian') ? 'active' : '' }}" href="{{ route('laporan.harian') }}">Harian</a>
         </li>
@@ -68,7 +68,7 @@
     </ul>
 
     <!-- Konten Laporan Gabungan -->
-    @if(request()->is('laporan/gabungan'))
+    {{-- @if(request()->is('laporan/gabungan'))
     <h3>Laporan Gabungan</h3>
     <table class="table">
         <thead>
@@ -109,7 +109,7 @@
             @endforeach
         </tbody>
     </table>
-    @endif
+    @endif --}}
 
     <!-- Laporan Harian -->
     @if(request()->is('laporan/harian'))

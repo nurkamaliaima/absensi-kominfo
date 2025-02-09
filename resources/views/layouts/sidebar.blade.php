@@ -50,8 +50,8 @@
     </li>
 
     <!-- Laporan -->
-    <li class="nav-item {{ (request()->routeIs('laporan.gabungan')) ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('laporan.gabungan') }}">
+    <li class="nav-item {{ (request()->routeIs('laporan.harian')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('laporan.harian') }}">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Laporan</span>
         </a>

@@ -42,7 +42,7 @@ Route::get('laporan/tidakhadir', [LaporanController::class, 'laporanTidakHadir']
 Route::get('laporan/terlambat', [LaporanController::class, 'laporanTerlambat'])->name('laporan.terlambat');
 Route::get('laporan/jamkerja', [LaporanController::class, 'laporanJamKerja'])->name('laporan.jamkerja');
 Route::get('laporan/individu', [LaporanController::class, 'laporanIndividu'])->name('laporan.individu');
-Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->name('laporan.gabungan');
+// Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->name('laporan.gabungan');
 
 
 // Route::middleware(['auth'])->group(function () {
