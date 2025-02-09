@@ -41,6 +41,7 @@ Route::get('laporan/bulanan', [LaporanController::class, 'laporanBulanan'])->nam
 Route::get('laporan/tidakhadir', [LaporanController::class, 'laporanTidakHadir'])->name('laporan.tidakhadir');
 Route::get('laporan/terlambat', [LaporanController::class, 'laporanTerlambat'])->name('laporan.terlambat');
 Route::get('laporan/jamkerja', [LaporanController::class, 'laporanJamKerja'])->name('laporan.jamkerja');
+Route::get('laporan/individu', [LaporanController::class, 'laporanIndividu'])->name('laporan.individu');
 Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->name('laporan.gabungan');
 
 

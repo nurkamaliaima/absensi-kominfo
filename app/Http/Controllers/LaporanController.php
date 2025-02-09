@@ -113,4 +113,25 @@ class LaporanController extends Controller
         // Kirim data ke view dengan tambahan 'type' sebagai jamkerja
         return view('laporan.laporan', compact('jamKerja', 'tanggal'))->with('type', 'jamkerja');
     }
+
+    public function laporanIndividu(Request $request)
+    {
+        $pesertaId = $request->input('pesertaId');
+        $peserta = User::all();
+
+        $kehadiran = [];
+
+        if ($request->has('pesertaId')) {
+            $attendance = LaporanKehadiranHarianResource::collection(Absensi::with('user')->where('user_id', $pesertaId)->get());
+            $concession = LaporanKehadiranHarianResource::collection(Concession::with('user')->where('user_id', $pesertaId)->get());
+
+            $kehadiran = array_merge(json_decode(json_encode($attendance)), json_decode(json_encode($concession)));
+
+            usort($kehadiran, function ($a, $b) {
+                return strtotime($a->created_at) - strtotime($b->created_at);
+            });
+        }
+
+        return view('laporan.laporan', compact('peserta', 'pesertaId', 'kehadiran'))->with('type', 'individu');
+    }
 }

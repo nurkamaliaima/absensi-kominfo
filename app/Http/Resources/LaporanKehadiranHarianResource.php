@@ -20,6 +20,7 @@ class LaporanKehadiranHarianResource extends JsonResource
             'nama'   => $this->user->name ?? '-',
             'status' => $this->present_at ? 'Hadir' : ucfirst($this->reason),
             'waktu'  => Carbon::parse($this->created_at)->locale('id')->isoFormat('D MMMM Y H:m:s'),
+            'created_at' => $this->created_at,
             $this->mergeWhen($this->present_at === null, [
                 'keterangan' => $this->description,
             ]),

@@ -23,6 +23,19 @@
             </div>
             @endif
 
+            <!-- Filter untuk Laporan Individu -->
+            @if(request()->is('laporan/individu'))
+            <div class="form-group col-md-3">
+                <label for="bulan">Peserta Magang</label>
+                <select name="pesertaId" id="pesertaId" class="custom-select form-control">
+                    <option selected>Pilih Peserta Magang</option>
+                    @foreach ($peserta as $p)
+                        <option value={{ $p->id }} {{ $p->id == $pesertaId ? "selected" : "" }}>{{ $p->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            @endif
+
             <div class="form-group col-md-3 d-flex align-items-end">
                 <button type="submit" class="btn btn-primary">Filter</button>
             </div>
@@ -45,6 +58,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/terlambat') ? 'active' : '' }}" href="{{ route('laporan.terlambat') }}">Terlambat</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('laporan/individu') ? 'active' : '' }}" href="{{ route('laporan.individu') }}">Individu</a>
         </li>
         {{-- <li class="nav-item">
             <a class="nav-link {{ request()->is('laporan/jamkerja') ? 'active' : '' }}" href="{{ route('laporan.jamkerja') }}">Jam Kerja</a>
@@ -200,6 +216,29 @@
             <tr>
                 <td>{{ $item->user->name ?? '-' }}</td>
                 <td>{{ $item->created_at }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @endif
+
+    <!-- Laporan Terlambat -->
+    @if(request()->is('laporan/individu'))
+    <h3>Laporan Kehadiran Peserta Magang</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Status Kehadiran</th>
+                <th>Waktu Kehadiran</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($kehadiran as $item)
+            <tr>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->status }}</td>
+                <td>{{ $item->waktu }}</td>
             </tr>
             @endforeach
         </tbody>
