@@ -6,6 +6,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use App\Models\Absensi;
 use App\Models\Concession;
+use App\Models\User;
 use App\Http\Resources\LaporanKehadiranHarianResource;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,27 @@ class DownloadLaporanController extends Controller
         $pdf = Pdf::loadView('admin.laporan_download.terlambat', [
             'terlambat' => $terlambat,
             'bulan'     => Carbon::parse($bulan)->locale('id')->isoFormat('MMMM Y'),
+        ]);
+        // return $pdf->download('example.pdf'); // Download the file
+        return $pdf->stream(); // Show in browser
+    }
+
+    public function laporanIndividu(Request $request)
+    {
+        $pesertaId = $request->input('pesertaId', '');
+
+        $attendance = LaporanKehadiranHarianResource::collection(Absensi::with('user')->where('user_id', $pesertaId)->get());
+        $concession = LaporanKehadiranHarianResource::collection(Concession::with('user')->where('user_id', $pesertaId)->get());
+
+        $kehadiran = array_merge(json_decode(json_encode($attendance)), json_decode(json_encode($concession)));
+
+        usort($kehadiran, function ($a, $b) {
+            return strtotime($a->created_at) - strtotime($b->created_at);
+        });
+
+        $pdf = Pdf::loadView('admin.laporan_download.individu', [
+            'kehadiran' => $kehadiran,
+            'peserta'   => User::find($pesertaId),
         ]);
         // return $pdf->download('example.pdf'); // Download the file
         return $pdf->stream(); // Show in browser

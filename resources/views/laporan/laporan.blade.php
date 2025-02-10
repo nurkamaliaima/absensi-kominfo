@@ -234,9 +234,12 @@
     </table>
     @endif
 
-    <!-- Laporan Terlambat -->
+    <!-- Laporan Individu -->
     @if(request()->is('laporan/individu'))
-    <h3>Laporan Kehadiran Peserta Magang</h3>
+    <div class="d-flex flex-row justify-content-between">
+        <h3>Laporan Kehadiran Peserta Magang</h3>
+        <a href="{{ url("laporan/individu/download?pesertaId=$pesertaId") }}" target="_blank" class="btn btn-success"><i class="fas fa-download fa-sm mr-1"></i> Generate Report</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
