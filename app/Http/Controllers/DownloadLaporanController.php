@@ -53,4 +53,19 @@ class DownloadLaporanController extends Controller
         // return $pdf->download('example.pdf'); // Download the file
         return $pdf->stream(); // Show in browser
     }
+
+    public function laporanTidakHadir(Request $request)
+    {
+        $tanggal = $request->input('tanggal', now()->format('Y-m-d'));
+
+        $concession = LaporanKehadiranHarianResource::collection(Concession::with('user')->whereDate('created_at', $tanggal)->get());
+        $tidakHadir = array_merge(json_decode(json_encode($concession)));
+
+        $pdf = Pdf::loadView('admin.laporan_download.tidak_hadir', [
+            'tidakHadir' => $tidakHadir,
+            'tanggal'    => Carbon::parse($tanggal)->locale('id')->isoFormat('D MMMM Y'),
+        ]);
+        // return $pdf->download('example.pdf'); // Download the file
+        return $pdf->stream(); // Show in browser
+    }
 }
