@@ -44,6 +44,11 @@ Route::get('laporan/jamkerja', [LaporanController::class, 'laporanJamKerja'])->n
 Route::get('laporan/individu', [LaporanController::class, 'laporanIndividu'])->name('laporan.individu');
 // Route::get('/laporan/gabungan', [LaporanController::class, 'laporanGabungan'])->name('laporan.gabungan');
 
+Route::controller(DownloadLaporanController::class)
+->group(function () {
+    Route::get('/laporan/harian/download/', 'laporanHarian');
+});
+
 
 // Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@index');
