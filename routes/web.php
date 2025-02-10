@@ -49,6 +49,7 @@ Route::controller(DownloadLaporanController::class)
     Route::get('/laporan/harian/download/', 'laporanHarian');
     Route::get('/laporan/bulanan/download/', 'laporanBulanan');
     Route::get('/laporan/tidak-hadir/download/', 'laporanTidakHadir');
+    Route::get('/laporan/terlambat/download/', 'laporanTerlambat');
 });
 
 

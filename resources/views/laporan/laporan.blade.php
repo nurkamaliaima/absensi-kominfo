@@ -212,7 +212,10 @@
 
     <!-- Laporan Terlambat -->
     @if(request()->is('laporan/terlambat'))
-    <h3>Laporan Terlambat ({{ $bulan }})</h3>
+    <div class="d-flex flex-row justify-content-between">
+        <h3>Laporan Terlambat ({{ $bulan }})</h3>
+        <a href="{{ url("laporan/terlambat/download?bulan=$bulan") }}" target="_blank" class="btn btn-success"><i class="fas fa-download fa-sm mr-1"></i> Generate Report</a>
+    </div>
     <table class="table">
         <thead>
             <tr>

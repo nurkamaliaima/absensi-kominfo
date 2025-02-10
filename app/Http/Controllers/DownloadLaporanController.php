@@ -68,4 +68,21 @@ class DownloadLaporanController extends Controller
         // return $pdf->download('example.pdf'); // Download the file
         return $pdf->stream(); // Show in browser
     }
+
+    public function laporanTerlambat(Request $request)
+    {
+        $jamKerja = '06:00:000';
+
+        $bulan = $request->input('bulan', now()->format('Y-m'));
+        $terlambat = Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))
+            ->whereTime('created_at', '>=', $jamKerja)->get();
+
+        $pdf = Pdf::loadView('admin.laporan_download.terlambat', [
+            'terlambat' => $terlambat,
+            'bulan'     => Carbon::parse($bulan)->locale('id')->isoFormat('MMMM Y'),
+        ]);
+        // return $pdf->download('example.pdf'); // Download the file
+        return $pdf->stream(); // Show in browser
+    }
 }
