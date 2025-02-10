@@ -115,7 +115,6 @@
     @if(request()->is('laporan/harian'))
     <div class="d-flex flex-row justify-content-between">
         <h3>Laporan Harian ({{ $tanggal }})</h3>
-        {{-- <a href="{{ url('laporan/harian/download?tanggal=' . $tanggal) }}" target="_blank" class="btn btn-success"><i class="fas fa-download fa-sm mr-1"></i> Generate Report</a> --}}
         <a href="{{ url("laporan/harian/download?tanggal=$tanggal") }}" target="_blank" class="btn btn-success"><i class="fas fa-download fa-sm mr-1"></i> Generate Report</a>
     </div>
     <table class="table">
@@ -147,7 +146,10 @@
 
     <!-- Laporan Bulanan -->
     @if(request()->is('laporan/bulanan'))
-    <h3>Laporan Bulanan ({{ $bulan }})</h3>
+    <div class="d-flex flex-row justify-content-between">
+        <h3>Laporan Bulanan ({{ $bulan }})</h3>
+        <a href="{{ url("laporan/bulanan/download?bulan=$bulan") }}" target="_blank" class="btn btn-success"><i class="fas fa-download fa-sm mr-1"></i> Generate Report</a>
+    </div>
     <table class="table">
         <thead>
             <tr>

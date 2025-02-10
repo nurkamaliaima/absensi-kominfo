@@ -47,6 +47,7 @@ Route::get('laporan/individu', [LaporanController::class, 'laporanIndividu'])->n
 Route::controller(DownloadLaporanController::class)
 ->group(function () {
     Route::get('/laporan/harian/download/', 'laporanHarian');
+    Route::get('/laporan/bulanan/download/', 'laporanBulanan');
 });
 
 

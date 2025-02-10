@@ -27,4 +27,30 @@ class DownloadLaporanController extends Controller
         // return $pdf->download('example.pdf'); // Download the file
         return $pdf->stream(); // Show in browser
     }
+
+    public function laporanBulanan(Request $request)
+    {
+        $bulan = $request->input('bulan', now()->format('Y-m'));
+
+        $attendance = LaporanKehadiranHarianResource::collection(
+            Absensi::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))->get()
+        );
+        $concession = LaporanKehadiranHarianResource::collection(
+            Concession::with('user')->whereMonth('created_at', date('m', strtotime($bulan)))
+            ->whereYear('created_at', date('Y', strtotime($bulan)))->get()
+        );
+
+        $kehadiranBulanan = array_merge(json_decode(json_encode($attendance)), json_decode(json_encode($concession)));
+        usort($kehadiranBulanan, function ($a, $b) {
+            return strtotime($a->waktu) - strtotime($b->waktu);
+        });
+
+        $pdf = Pdf::loadView('admin.laporan_download.bulanan', [
+            'kehadiranBulanan' => $kehadiranBulanan,
+            'bulan'            => Carbon::parse($bulan)->locale('id')->isoFormat('MMMM Y'),
+        ]);
+        // return $pdf->download('example.pdf'); // Download the file
+        return $pdf->stream(); // Show in browser
+    }
 }
