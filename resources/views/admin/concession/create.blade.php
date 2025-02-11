@@ -3,8 +3,8 @@
 @section('content')
 
 <!-- Page Heading -->
-<a href="{{ url('concession') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back</a>
-<h1 class="h3 my-4 text-gray-800">Add concession</h1>
+<a href="{{ url('concession') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
+<h1 class="h3 my-4 text-gray-800">Tambah Perizinan</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -13,7 +13,7 @@
             @csrf
             <div class="form-group row">
                 <div class="col-md-6 mt-2">
-                    <label for="">Name</label>
+                    <label for="">Nama</label>
                     <select name="user_id" id="" class="form-control">
                         @foreach($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="">Reason</label>
+                    <label for="">Alasan</label>
                     <select name="reason" class="form-control">
                         <option value="sakit">Sakit</option>
                         <option value="izin">Izin</option>
@@ -29,7 +29,7 @@
                     </select>
                 </div>
                 <div class="col-md-6 mt-2">
-                    <label for="">Description</label>
+                    <label for="">Deskripsi</label>
                     <textarea name="description" class="form-control">{{ old('description') }}</textarea>
                     @error('description')
                     <small class="text-danger">{{ $message }}</small>

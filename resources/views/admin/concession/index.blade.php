@@ -4,10 +4,10 @@
 
 <!-- Page Heading -->
 @if(session('role_id') !== 3)
-<h1 class="h3 mb-2 text-gray-800">Management concession</h1>
+<h1 class="h3 mb-2 text-gray-800">Manajemen Perizinan</h1>
 <p class="mb-4">Disini fitur untuk menambahkan, menyunting, dan menghapus data izin pengguna.</p>
-@else 
-<h1 class="h3 mb-2 text-gray-800">Report Concession</h1>
+@else
+<h1 class="h3 mb-2 text-gray-800">Laporan Perizinan</h1>
 @endif
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -30,11 +30,12 @@
                 <thead class="bg-light">
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Reason</th>
-                        <th>Description</th>
+                        <th>Nama</th>
+                        <th>Tanggal</th>
+                        <th>Alasan</th>
+                        <th>Keterangan</th>
                         @if(session('role_id') !== 3)
-                        <th>Action</th>
+                        <th>Aksi</th>
                         @endif
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $concession->user->name }}</td>
+                        <td>{{ date('d F Y', strtotime($concession->created_at)) }}</td>
                         <td>{{ $concession->reason }}</td>
                         <td>{{ $concession->description }}</td>
                         @if(session('role_id') !== 3)

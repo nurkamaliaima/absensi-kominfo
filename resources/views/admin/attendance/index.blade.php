@@ -4,10 +4,10 @@
 
 <!-- Page Heading -->
 @if(session('role_id') == 1)
-<h1 class="h3 mb-2 text-gray-800">Management attendance</h1>
+<h1 class="h3 mb-2 text-gray-800">Manajemen Kehadiran</h1>
 <p class="mb-4">Disini fitur untuk menyunting dan menghapus data absen pengguna.</p>
 @else
-<h1 class="h3 mb-2 text-gray-800">List Attendance</h1>
+<h1 class="h3 mb-2 text-gray-800">Daftar Kehadiran</h1>
 @endif
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -28,11 +28,11 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Present at</th>
+                        <th>Nama</th>
+                        <th>Deskripsi</th>
+                        <th>Waktu Kehadiran</th>
                         @if(session('role_id') !== 3)
-                        <th>Action</th>
+                        <th>Aksi</th>
                         @endif
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ optional($attendance->user)->name }}</td>
                         <td>{{ $attendance->user ? $attendance->user->name : 'Unknown User' }}</td>
-                        <td>{{ date('D, d F Y H:m:i', strtotime($attendance->present_at)) }}</td>
+                        <td>{{ date('d F Y H:m:i', strtotime($attendance->present_at)) }}</td>
                         <td>{{ $attendance->description }}</td>
                         @if(session('role_id') !== 3)
                         <td>

@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    
+
 
     <!-- Content Row -->
     <div class="row">
@@ -16,7 +16,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                User</div>
+                                Pengguna</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $users }}</div>
                         </div>
                         <div class="col-auto">
@@ -34,7 +34,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Concession</div>
+                                Perizinan</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $concessions }}</div>
                         </div>
                         <div class="col-auto">
@@ -50,7 +50,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Attendance</div>
+                                Kehadiran</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $attendances }}</div>
                         </div>
                         <div class="col-auto">
@@ -88,7 +88,7 @@
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+            <h6 class="m-0 font-weight-bold text-white">Pengguna</h6>
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -126,7 +126,7 @@
     <!-- Project Card Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+            <h6 class="m-0 font-weight-bold text-white">Projects</h6>
         </div>
         <div class="card-body">
             <h4 class="small font-weight-bold">Laporan <span class="float-right">20%</span></h4>

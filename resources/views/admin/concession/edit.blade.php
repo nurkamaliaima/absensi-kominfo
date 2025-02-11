@@ -3,9 +3,9 @@
 @section('content')
 
 <!-- Page Heading -->
-<a href="{{ url('concession') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back</a>
+<a href="{{ url('concession') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
 
-<h1 class="h3 m-4 text-gray-800">Edit concession</h1>
+<h1 class="h3 m-4 text-gray-800">Edit Perizinan</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -15,7 +15,7 @@
             @csrf
             <div class="form-group row">
                 <div class="col-md-6 mt-2">
-                    <label for="">Name</label>
+                    <label for="">Nama</label>
                     <select name="user_id" id="" class="form-control">
                         @foreach($users as $user)
                         <option value="{{ $user->id }}" {{ $concession->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="">Reason</label>
+                    <label for="">Alasan</label>
                     <select name="reason" class="form-control">
                         <option value="sakit" {{ $concession->reason == 'sakit' ? 'selected' : '' }}>Sakit</option>
                         <option value="izin" {{ $concession->reason == 'izin' ? 'selected' : '' }}>Izin</option>
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="col-md-6 mt-2">
-                    <label for="">Description</label>
+                    <label for="">Deskripsi</label>
                     <textarea name="description" class="form-control">{{ $concession->description }}</textarea>
                     @error('description')
                     <small class="text-danger">{{ $message }}</small>

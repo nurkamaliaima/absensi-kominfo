@@ -28,14 +28,14 @@
     <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('user') }}">
             <i class="fas fa-fw fa-users"></i>
-            <span>Users</span></a>
+            <span>Pengguna</span></a>
     </li>
 
     <!-- Nav Item - Attendance -->
     <li class="nav-item {{ (request()->segment(1) == 'attendance') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('attendance') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>Attendance</span></a>
+            <span>Kehadiran</span></a>
     </li>
 
     <li class="nav-item {{ (request()->segment(1) == 'role') ? 'active' : '' }}">
@@ -46,7 +46,7 @@
     <li class="nav-item {{ (request()->segment(1) == 'concession') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('concession') }}">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Concession</span></a>
+            <span>Perizinan</span></a>
     </li>
 
     <!-- Laporan -->
