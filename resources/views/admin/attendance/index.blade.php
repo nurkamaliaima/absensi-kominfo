@@ -6,7 +6,7 @@
 @if(session('role_id') == 1)
 <h1 class="h3 mb-2 text-gray-800">Management attendance</h1>
 <p class="mb-4">Disini fitur untuk menyunting dan menghapus data absen pengguna.</p>
-@else 
+@else
 <h1 class="h3 mb-2 text-gray-800">List Attendance</h1>
 @endif
 <!-- DataTales Example -->
@@ -42,7 +42,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ optional($attendance->user)->name }}</td>
                         <td>{{ $attendance->user ? $attendance->user->name : 'Unknown User' }}</td>
-                        <td>{{ date('D, d F Y', strtotime($attendance->present_at)) }}</td>
+                        <td>{{ date('D, d F Y H:m:i', strtotime($attendance->present_at)) }}</td>
                         <td>{{ $attendance->description }}</td>
                         @if(session('role_id') !== 3)
                         <td>
