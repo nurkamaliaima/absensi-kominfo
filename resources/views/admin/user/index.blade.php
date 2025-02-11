@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Management users</h1>
+<h1 class="h3 mb-2 text-gray-800">Manajemen Pengguna</h1>
 <p class="mb-4">Disini fitur untuk menambahkan, menyunting, dan menghapus data pengguna.</p>
 
 <!-- DataTales Example -->
@@ -24,12 +24,12 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-light">
                     <tr>
-                        <th>Name</th>
+                        <th>Nama</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>address</th>
-                        <th>Position</th>
-                        <th>Action</th>
+                        <th>Nomor Hp</th>
+                        <th>Alamat</th>
+                        <th>Posisi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

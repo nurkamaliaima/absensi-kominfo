@@ -30,7 +30,7 @@
 
     <div id="footer">
         <div class="text-center mt-5">
-            Copyright &copy; Your Website 2021 | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+            Copyright &copy; Nurkamalia Azhari 2024</a>
 
         </div>
     </div>

@@ -110,7 +110,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021 | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+                        <span>Copyright &copy; Nurkamalia Azhari 2024</a>
                         </span>
                     </div>
                 </div>

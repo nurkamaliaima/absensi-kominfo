@@ -54,16 +54,9 @@
                     </div>
                     <button type="submit" class="btn btn-success">Login</button>
                 </form>
-<br><center><p>Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a></p></center>
+<br><center><p>Copyright &copy; Nurkamalia Azhari 2024</a></p></center>
 
             </div>
-
-        </div>
-    </div>
-
-    <div id="footer">
-        <div class="text-center my-3">
-            Copyright &copy; Your Website 2021
 
         </div>
     </div>

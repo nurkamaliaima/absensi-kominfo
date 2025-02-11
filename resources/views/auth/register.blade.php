@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <img src="https://d17ivq9b7rppb3.cloudfront.net/original/event/codepolitan_x_here_technologies_boost_your_android_app_performance_with_jetpack_and_utilize_here_maps_api_logo_071119135400.png" width="120" alt="">
+                        <img src="{{ asset('images/logo.jpg') }}" width="130" alt="Logo Kominfo" class="mb-3">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
                         <form class="user" method="POST" action="{{ url('register') }}">
@@ -58,7 +58,7 @@
                                 Register Account
                             </button>
                         </form>
-                        <br><center><p>Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a></p></center>
+                        <br><center><p>Copyright &copy; Nurkamalia Azhari 2024</a></p></center>
 
                         <hr>
                         <!-- <div class="text-center">
