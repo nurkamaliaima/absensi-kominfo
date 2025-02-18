@@ -25,4 +25,14 @@
         </div>
     </div>
     @yield('content')
+    <div class="my-5 float-right pr-5">
+        <p class="mb-0">Mengetahui,</p>
+        <p class="mb-0">KEPALA DINAS</p>
+        <br />
+        <br />
+        <br />
+        <p class="mb-0 font-weight-bold">Hj. RAHMAWATY, ST., MT.</p>
+        <p class="mb-0">Pembina Utama Muda</p>
+        <p>NIP. 19710726 199703 2 005</p>
+    </div>
 </body>
